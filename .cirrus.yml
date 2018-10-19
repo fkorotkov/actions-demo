@@ -1,0 +1,5 @@
+container:
+  image: alpine:latest
+  
+foo_task:
+  script: printenv
