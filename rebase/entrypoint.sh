@@ -29,5 +29,5 @@ pr_resp=$(curl -XGET -sSL \
           -H "${API_HEADER}" \
           "${URI}/repos/$REPO_FULLNAME/pulls/$PR_NUMBER")
 
-BASE_BRANCH=$(echo "$resp" | jq -e --raw-output .base.ref)
+BASE_BRANCH=$(echo "$resp" | jq -r .base.ref)
 echo "Base branch for PR #$PR_NUMBER is $BASE_BRANCH"
