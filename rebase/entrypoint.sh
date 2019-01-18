@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # skip if no /rebase
 echo "Checking if contains '/rebase' command..."
 (jq -r ".comment.body" "$GITHUB_EVENT_PATH" | grep -E "/rebase") || exit 78
@@ -8,7 +10,7 @@ echo "Checking if contains '/rebase' command..."
 echo "Checking if a PR command..."
 (jq -r ".issue.pull_request.url" "$GITHUB_EVENT_PATH") || exit 78
 
-PR_NUMBER=$(jq -r ".issue.id" "$GITHUB_EVENT_PATH")
+PR_NUMBER=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
 REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
 echo "Collecting information about PR #$PR_NUMBER of $REPO_FULLNAME..."
 
