@@ -20,4 +20,5 @@ action "Cirrus CI Email" {
   env = {
     APP_NAME = "Cirrus CI"
   }
+  secrets = ["GITHUB_TOKEN", "MAIL_FROM", "MAIL_HOST", "MAIL_USERNAME", "MAIL_PASSWORD"]
 }
