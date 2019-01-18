@@ -31,4 +31,10 @@ pr_resp=$(curl -XGET -sSL \
 echo "$resp"
 
 BASE_BRANCH=$(echo "$resp" | jq -r .base.ref)
+
+if [[ -z "$BASE_BRANCH" ]]; then
+	echo "Cannot get base branch information for PR #$PR_NUMBER!"
+	exit 1
+fi
+
 echo "Base branch for PR #$PR_NUMBER is $BASE_BRANCH"
