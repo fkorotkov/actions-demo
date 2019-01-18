@@ -20,14 +20,15 @@ if [[ -z "$GITHUB_TOKEN" ]]; then
 fi
 
 URI=https://api.github.com
-API_VERSION=v3
-API_HEADER="Accept: application/vnd.github.${API_VERSION}+json"
-AUTH_HEADER="Authorization: token ${GITHUB_TOKEN}"
+API_HEADER="Accept: application/vnd.github.v3+json"
+AUTH_HEADER="Authorization: token $GITHUB_TOKEN"
 
 pr_resp=$(curl -XGET -sSL \
           -H "${AUTH_HEADER}" \
           -H "${API_HEADER}" \
           "${URI}/repos/$REPO_FULLNAME/pulls/$PR_NUMBER")
+
+echo "$resp"
 
 BASE_BRANCH=$(echo "$resp" | jq -r .base.ref)
 echo "Base branch for PR #$PR_NUMBER is $BASE_BRANCH"
