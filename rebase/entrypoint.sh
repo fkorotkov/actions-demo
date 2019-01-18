@@ -48,7 +48,8 @@ fi
 git remote add upstream https://x-access-token:$GITHUB_TOKEN@github.com/$REPO_FULLNAME.git
 
 set -o xtrace
-git pull
+git pull origin $HEAD_BRANCH
+git pull origin $BASE_BRANCH
 git checkout -b $HEAD_BRANCH
 git rebase $BASE_BRANCH
 git push --force upstream $HEAD_BRANCH
