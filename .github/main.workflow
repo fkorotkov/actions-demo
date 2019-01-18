@@ -4,5 +4,20 @@ workflow "Cirrus CI Demo" {
 }
 
 action "Cirrus CI Passes" {
-  uses = "docker://cirrusci/actions-trigger:latest"
+  uses = "docker://cirrusactions/check-suite:latest"
+  env = {
+    APP_NAME = "Cirrus CI"
+  }
+}
+
+workflow "Send Email" {
+  on = "check_suite"
+  resolves = "Cirrus CI Email"
+}
+
+action "Cirrus CI Email" {
+  uses = "docker://cirrusactions/email:latest"
+  env = {
+    APP_NAME = "Cirrus CI"
+  }
 }
