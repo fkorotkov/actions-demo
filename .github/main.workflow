@@ -21,7 +21,7 @@ action "Cirrus CI Passes" {
 }
 
 action "Cirrus CI Email" {
-  uses = "./email/"
+  uses = "docker://cirrusactions/email:latest"
   env = {
     APP_NAME = "Cirrus CI"
   }
