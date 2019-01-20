@@ -8,7 +8,7 @@ workflow "Send Email" {
   resolves = "Cirrus CI Email"
 }
 
-workflow "Rebase Comment" {
+workflow "Automatic Rebase" {
   on = "issue_comment"
   resolves = "Rebase"
 }
@@ -29,6 +29,6 @@ action "Cirrus CI Email" {
 }
 
 action "Rebase" {
-  uses = "./rebase/"
+  uses = "docker://cirrusactions/rebase:latest"
   secrets = ["GITHUB_TOKEN"]
 }
