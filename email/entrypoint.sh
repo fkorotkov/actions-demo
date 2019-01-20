@@ -6,4 +6,6 @@ set -o xtrace
 echo "Executing email action..."
 ls -l /actions
 whoami
-./actions/email
+
+chmod +x /actions/email
+exec /actions/email
