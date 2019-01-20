@@ -23,7 +23,7 @@ URI=https://api.github.com
 API_HEADER="Accept: application/vnd.github.v3+json"
 AUTH_HEADER="Authorization: token $GITHUB_TOKEN"
 
-pr_resp=$(curl -sSL -H "${AUTH_HEADER}" -H "${API_HEADER}" \
+pr_resp=$(curl -X GET -sSL -H "${AUTH_HEADER}" -H "${API_HEADER}" \
           "${URI}/repos/$REPO_FULLNAME/pulls/$PR_NUMBER")
 
 BASE_REPO=$(echo "$pr_resp" | jq -r .base.repo.full_name)
