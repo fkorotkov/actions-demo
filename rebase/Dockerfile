@@ -11,5 +11,5 @@ LABEL "com.github.actions.color"="purple"
 
 RUN apk --no-cache add jq bash curl git
 
-ADD entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ADD entry.sh /entry.sh
+ENTRYPOINT ["/entry.sh"]
