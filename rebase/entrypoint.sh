@@ -53,12 +53,23 @@ fi
 git remote add upstream https://x-access-token:$GITHUB_TOKEN@github.com/$REPO_FULLNAME.git
 
 set -o xtrace
-git fetch upstream $HEAD_BRANCH
+
+# make sure base is up-to-date
 git fetch upstream $BASE_BRANCH
-git checkout -b $HEAD_BRANCH upstream/$HEAD_BRANCH
+git checkout -b action-rebase/$BASE_BRANCH upstream/$BASE_BRANCH
+
+# make sure the PR branch is up-to-date
+git fetch upstream $HEAD_BRANCH
+git checkout -b action-rebase/$HEAD_BRANCH upstream/$HEAD_BRANCH
+
 echo "Before rebase"
 git log
-git rebase upstream/$BASE_BRANCH
+
+# do the rebase
+git rebase action-rebase/$BASE_BRANCH
+
 echo "After rebase"
 git log
-echo "Skip $HEAD_BRANCH pushing..."
+
+# push back
+git push --force upstream $HEAD_BRANCH
