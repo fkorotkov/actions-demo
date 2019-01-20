@@ -4,6 +4,6 @@ workflow "Automatic Rebase" {
 }
 
 action "Rebase" {
-  uses = "./rebase/"
+  uses = "docker://cirrusactions/rebase:latest"
   secrets = ["GITHUB_TOKEN"]
 }
