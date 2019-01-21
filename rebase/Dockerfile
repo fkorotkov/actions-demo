@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL repository="http://github.com/cirrus-actions/rebase"
 LABEL homepage="http://github.com/cirrus-actions/rebase"
 LABEL maintainer="Cirrus Labs"
