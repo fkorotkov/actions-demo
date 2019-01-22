@@ -60,7 +60,7 @@ git checkout -b action-rebase/$BASE_BRANCH upstream/$BASE_BRANCH
 
 # make sure the PR branch is up-to-date
 git fetch upstream $HEAD_BRANCH
-git checkout -b action-rebase/$HEAD_BRANCH upstream/$HEAD_BRANCH
+git checkout -b $HEAD_BRANCH upstream/$HEAD_BRANCH
 
 echo "Before rebase"
 git log
@@ -72,4 +72,4 @@ echo "After rebase"
 git log
 
 # push back
-git push --force upstream $HEAD_BRANCH
+git push --force
