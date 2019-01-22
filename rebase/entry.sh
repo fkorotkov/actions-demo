@@ -62,9 +62,6 @@ git checkout -b action-rebase/$BASE_BRANCH upstream/$BASE_BRANCH
 git fetch upstream $HEAD_BRANCH
 git checkout -b $HEAD_BRANCH upstream/$HEAD_BRANCH
 
-echo "Before rebase"
-git log
-
 # do the rebase
 git rebase action-rebase/$BASE_BRANCH
 
