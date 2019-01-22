@@ -68,8 +68,5 @@ git log
 # do the rebase
 git rebase action-rebase/$BASE_BRANCH
 
-echo "After rebase"
-git log
-
 # push back
 git push --force
