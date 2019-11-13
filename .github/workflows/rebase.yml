@@ -4,6 +4,7 @@ name: Test Containers
 jobs:
   env:
     name: Env
+    runs-on: [ubuntu-latest]
     container:
       image: node:latest
     steps:
