@@ -11,6 +11,6 @@ jobs:
     - uses: actions/checkout@master
     - run: cat $GITHUB_EVENT_PATH
     - name: Automatic Rebase
-      uses: cirrus-actions/rebase@fkorotkov-ignore-whitespaces
+      uses: cirrus-actions/rebase@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
