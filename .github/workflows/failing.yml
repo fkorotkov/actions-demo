@@ -1,0 +1,17 @@
+name: CI
+on: push
+
+jobs:
+  linux:
+    name: Test Failing
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Sleep
+      run: sleep 60
+
+    - name: Exit
+      run: exit 1
