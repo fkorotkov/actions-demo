@@ -1,0 +1,6 @@
+container:
+  image: alpine:latest
+  cpu: 1
+  
+task:
+  script: printenv
