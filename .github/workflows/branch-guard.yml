@@ -12,6 +12,6 @@ jobs:
     name: Branch Guard Check
     runs-on: ubuntu-latest
     steps:
-    - uses: cirrus-actions/branch-guard@v0.3
+    - uses: cirrus-actions/branch-guard@v0.4
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
