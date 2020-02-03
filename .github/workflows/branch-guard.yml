@@ -14,6 +14,6 @@ jobs:
     steps:
     - uses: cirrus-actions/branch-guard@v0.9
       with:
-        appsToCheck: Cirrus CI,GitHub Actions
+        appsToCheck: Cirrus CI
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
