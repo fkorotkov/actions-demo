@@ -12,8 +12,8 @@ jobs:
     name: Branch Guard Check
     runs-on: ubuntu-latest
     steps:
-    - uses: cirrus-actions/branch-guard@v0.8 
+    - uses: cirrus-actions/branch-guard@v0.9
+      with:
+        appsToCheck: Cirrus CI
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        appsToIgnore: "Travis CI,Github Actions"
