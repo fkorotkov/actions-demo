@@ -3,4 +3,4 @@ container:
   cpu: 1
   
 task:
-  script: exit 0
+  script: exit 1
