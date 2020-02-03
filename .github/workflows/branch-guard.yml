@@ -2,7 +2,7 @@ on:
   check_suite: # to update all PRs upon a Check Suite completion
     type: ['completed']
   pull_request: # to update newly open PRs
-    type: ['opened']
+    type: ['opened', 'synchronize']
   
 name: Branch Guard
 jobs:
