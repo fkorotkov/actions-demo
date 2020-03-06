@@ -1,6 +1,5 @@
 container:
   image: alpine:latest
-  cpu: 1
   
 task:
-  script: sleep 5 && exit 1
+  script: sleep 30 && exit 1
