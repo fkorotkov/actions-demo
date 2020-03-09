@@ -2,4 +2,4 @@ container:
   image: alpine:latest
   
 task:
-  script: sleep 30 && exit 1
+  script: sleep 30 && exit 0
