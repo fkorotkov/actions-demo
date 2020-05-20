@@ -5,8 +5,13 @@ on:
 name: Email about Cirrus CI failures
 jobs:
   continue:
-    name: Cirrus CI Failed
+    name: After Cirrus CI
     if: github.event.check_suite.app.name == 'Cirrus CI' && github.event.check_suite.conclusion != 'success'
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - run: echo $MESSAGE && false
+    env:
+      MESSAGE: |
+        Cirrus CI ${{ github.event.check_suite.conclusion }} on ${{ github.event.check_suite.head_branch }} branch!
+
+        See https://github.com/${{ github.event.repository.full_name }}/check-suites/${{ github.event.check_suite.id }}/check-runs for details!
