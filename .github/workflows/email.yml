@@ -1,0 +1,12 @@
+on:
+  check_suite:
+    type: ['completed']
+
+name: Email about Cirrus CI failures
+jobs:
+  continue:
+    name: After Cirrus CI
+    if: github.event.check_suite.app.name == 'Cirrus CI' && github.event.check_suite.conclusion == 'failed'
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
