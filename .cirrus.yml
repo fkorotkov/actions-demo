@@ -1,5 +1,7 @@
 container:
   image: alpine:latest
+  cpu: 0.5
+  memory: 256Mb
   
 task:
-  script: sleep 30 && exit 1
+  clone_script: exit 1
