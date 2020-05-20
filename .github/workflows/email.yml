@@ -8,10 +8,23 @@ jobs:
     name: After Cirrus CI
     if: github.event.check_suite.app.name == 'Cirrus CI' && github.event.check_suite.conclusion != 'success'
     runs-on: ubuntu-latest
-    steps:
-      - run: echo $MESSAGE && false
     env:
-      MESSAGE: |
-        Cirrus CI ${{ github.event.check_suite.conclusion }} on ${{ github.event.check_suite.head_branch }} branch!
-
-        See https://github.com/${{ github.event.repository.full_name }}/check-suites/${{ github.event.check_suite.id }}/check-runs for details!
+      MESSAGE: ${{ github.event.check_suite.head_commit.message }}
+    steps:
+      - uses: octokit/request-action@v2.x
+        id: get_failed_check_run
+        with:
+          route: GET /repos/:repository/check-suites/:check_suite_id/check-runs?status=completed
+          mediaType: '{"previews": ["antiope"]}'
+          repository: ${{ github.repository }}
+          check_suite_id: ${{ github.event.check_suite.id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          echo "Cirrus CI ${{ github.event.check_suite.conclusion }} on ${{ github.event.check_suite.head_branch }} branch!"
+          echo "SHA ${{ github.event.check_suite.head_sha }}"
+          echo $MESSAGE
+          echo "See $CHECK_RUN_URL for details"
+          exit 1
+        env:
+          CHECK_RUN_URL: ${{ fromJson(steps.get_failed_check_run.outputs.data).check_runs[0].html_url }}
