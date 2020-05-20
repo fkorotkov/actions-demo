@@ -4,4 +4,4 @@ container:
   memory: 256Mb
   
 task:
-  clone_script: exit 4
+  clone_script: exit 5
