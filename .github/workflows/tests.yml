@@ -1,0 +1,14 @@
+name: tests
+on: [push, pull_request]
+
+jobs:
+  run:
+    name: Run
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup node 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
