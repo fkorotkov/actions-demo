@@ -10,10 +10,8 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: docker.pkg.github.com
-          repository: ${{ github.event.repository.full_name }}/mkdocs
-          tag_with_ref: true
+          tags: docker.pkg.github.com/${{ github.event.repository.full_name }}/mkdocs:${{ github.event.release.tag_name }}
