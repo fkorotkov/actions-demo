@@ -1,5 +1,1 @@
-container:
-  image: alpine:latest
-  
-task:
-  script: sleep 30 && exit 0
+# no tasks
