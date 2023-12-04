@@ -25,3 +25,5 @@ jobs:
         run: uname -a
       - name: whoami
         run: whoami
+      - name: sleep
+        run: sleep 300
